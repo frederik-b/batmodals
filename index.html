@@ -1,0 +1,292 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>batmodals</title>
+</head>
+<style>
+  * {
+    margin: 0;
+  }
+  *+* {
+    margin-top: 1.5em;
+  }
+  button {
+    padding:0 .5em;
+    background-color: lightsteelblue;
+    border: .2em solid steelblue;
+  }
+  button:hover {
+    background-color: steelblue;
+  }
+  :focus {
+    border: .2em solid gold;
+  }
+  :not(body):not(html):hover {
+  //  background-color: crimson;
+  }
+  body {
+    font-size: 1.5vw;
+    padding: 1.5em;
+    margin: 0;
+  }
+  .modal::before,
+  .modal::after {
+    content: '';
+    width: 100%;
+    height: 2em;
+  }
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 1;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    overflow-y : auto;
+  }
+  /*1*/
+  .modal:not([hidden]) {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  /*2*/
+  .modal:not([hidden]) + .modal:not([hidden]):last-child {
+    background: rgba(0, 0, 0, 0.63);
+  }
+  /*3*/
+  .modal:not([hidden]) + .modal:not([hidden]) + .modal:not([hidden]):last-child {
+    background: rgba(0, 0, 0, 0.56);
+  }
+  /*4*/
+  .modal:not([hidden]) + .modal:not([hidden]) + .modal:not([hidden]) + .modal:not([hidden]):last-child {
+    background: rgba(0, 0, 0, 0.49);
+  }
+  /*5*/
+  .modal:not([hidden]) +  .modal:not([hidden]) + .modal:not([hidden]) + .modal:not([hidden]) + .modal:not([hidden]):last-child {
+    background: rgba(0, 0, 0, 0.42);
+  }
+  .modal:not([hidden]):nth-last-of-type(n+2) {
+    background: rgba(0, 0, 0, 0.17);
+  }
+  .modalContent {
+    background: white;
+    width: 30vw;
+    margin: auto;
+    padding: 1.5em;
+  }
+  .noscroll {
+    position: fixed;
+    overflow: hidden;
+  }
+  [hidden] {
+    display: none;
+  }
+</style>
+<body>
+  <main>
+    <h1>BATMODALS</h1>
+    <button class="b" data-modal-for="m1">1</button>
+    <button class="b" data-modal-for="m2">2</button>
+    <button class="b" data-modal-for="m3">3</button>
+    <button class="b" data-modal-for="m4">4</button>
+    <button class="b" data-modal-for="m5">5</button>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </main>
+  <div class="modal" id="m1" hidden>
+    <div class="modalContent" style="width:30vw">
+      <h2>111</h2>
+      <button class="b" data-modal-for="m1">1</button>
+      <button class="b" data-modal-for="m2">2</button>
+      <button class="b" data-modal-for="m3">3</button>
+      <button class="b" data-modal-for="m4">4</button>
+      <button class="b" data-modal-for="m5">5</button>
+      <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+  </div>
+  <div class="modal" id="m2" hidden>
+    <div class="modalContent" style="width:32vw">
+      <h2>222</h2>
+      <button class="b" data-modal-for="m1">1</button>
+      <button class="b" data-modal-for="m2">2</button>
+      <button class="b" data-modal-for="m3">3</button>
+      <button class="b" data-modal-for="m4">4</button>
+      <button class="b" data-modal-for="m5">5</button>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    </div>
+  </div>
+  <div class="modal" id="m3" hidden>
+    <div class="modalContent" style="width:34vw">
+      <h2>333</h2>
+      <button class="b" data-modal-for="m1">1</button>
+      <button class="b" data-modal-for="m2">2</button>
+      <button class="b" data-modal-for="m3">3</button>
+      <button class="b" data-modal-for="m4">4</button>
+      <button class="b" data-modal-for="m5">5</button>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+  </div>
+  <div class="modal" id="m4" hidden>
+    <div class="modalContent" style="width:36vw">
+      <h2>444</h2>
+      <button class="b" data-modal-for="m1">1</button>
+      <button class="b" data-modal-for="m2">2</button>
+      <button class="b" data-modal-for="m3">3</button>
+      <button class="b" data-modal-for="m4">4</button>
+      <button class="b" data-modal-for="m5">5</button>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+  </div>
+  <div class="modal" id="m5" hidden>
+    <div class="modalContent" style="width:38vw">
+      <h2>555</h2>
+      <button class="b" data-modal-for="m1">1</button>
+      <button class="b" data-modal-for="m2">2</button>
+      <button class="b" data-modal-for="m3">3</button>
+      <button class="b" data-modal-for="m4">4</button>
+      <button class="b" data-modal-for="m5">5</button>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+  </div>
+  <button class="b" data-modal-for="m1">1</button>
+  <button class="b" data-modal-for="m2">2</button>
+  <button class="b" data-modal-for="m3">3</button>
+  <button class="b" data-modal-for="m4">4</button>
+  <button class="b" data-modal-for="m5">5</button>
+
+<script>
+  var modal = window.modal = {};
+
+  modal.show = function() {
+    if (document.querySelectorAll('.modal:not([hidden])').length) {
+
+    } else {
+      document.body.style.paddingRight = window.innerWidth - document.body.clientWidth + 'px';
+      document.body.classList.add('noscroll');
+    }
+    document.body.appendChild(this);
+    this.removeAttribute('hidden');
+    this.focusBefore = forceFocus(this);
+  }
+
+  modal.close = function() {
+    if (this === window || !this.classList.contains('modal')) {
+      return;
+    }
+    this.setAttribute('hidden', '');
+    if (this.focusBefore) {
+      forceFocus(this.focusBefore);
+      delete this.focusBefore;
+    }
+    if (document.querySelectorAll('.modal:not([hidden])').length) {
+      document.body.insertBefore(this, document.querySelector('.modal:not([hidden])'));
+    } else {
+      document.body.style.paddingRight = '';
+      document.body.classList.remove('noscroll');
+    }
+  }
+
+  function forceFocus(node) {
+    var ret = document.activeElement;
+    if (typeof node === "string") {
+      node = document.getElementById(node) || document.querySelector(node);
+    }
+    if (node.tabIndex === -1) {
+      if (node.hasAttribute('tabindex')) {
+        node.setAttribute('tabindex', 0);
+        node.focus();
+        node.setAttribute('tabindex', -1);
+      } else {
+        node.setAttribute('tabindex', 0);
+        node.focus();
+        node.removeAttribute('tabindex');
+      }
+    } else {
+      node.focus();
+    }
+    return ret;
+  }
+
+  function buttonListener(event) {
+    modal.show.call(document.getElementById(this.dataset.modalFor));
+  }
+
+  function dimmerListener(event) {
+    modal.close.call(this);
+  }
+
+  function modalListener(event) {
+    if(this === event.target) {
+      modal.close.call(this);
+    }
+  }
+
+  Array.prototype.slice.call(document.querySelectorAll('.b')).forEach(function(node){
+    node.addEventListener('click', buttonListener);
+  });
+
+  Array.prototype.slice.call(document.querySelectorAll('.modal')).forEach(function(node){
+    node.addEventListener('click', modalListener);
+  });
+
+  document.body.addEventListener('keyup', function(event) {
+    if (event.keyCode === 27) { // 27 == esc
+      modal.close.call(Array.prototype.slice.call(document.querySelectorAll('.modal:not([hidden])')).pop());
+      return;
+    }
+    if (event.keyCode === 9) { // 9 == tab
+      var modal = Array.prototype.slice.call(document.querySelectorAll('.modal:not([hidden])')).pop();
+      if (!modal) {
+        return;
+      }
+      if(modal.contains(document.activeElement)) {
+        return;
+      }
+      if (event.shiftKey) {
+        // focus last focusable element
+        Array.prototype.slice.call(modal.querySelectorAll('input, [tabindex]:not([tabindex="-1"])')).pop();
+        //Array.prototype.slice.call(modal.querySelectorAll('input, [tabindex!=-1]'))[0].focus();
+      } else {
+        // focus first focusable element
+        //Array.prototype.slice.call(modal.querySelectorAll('input, [tabindex!=-1]'))[0].focus();
+      }
+      return;
+    }
+  });
+
+</script>
+</body>
+</html>
