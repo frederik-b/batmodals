@@ -1,0 +1,98 @@
+/*BASE STYLES - not needed for modal functionality*/
+
+* {
+  margin: 0;
+}
+*+* {
+  margin-top: 1.5em;
+}
+button {
+  padding:0 .5em;
+  background-color: lightsteelblue;
+  border: .125em solid steelblue;
+}
+button:hover {
+  background-color: steelblue;
+}
+:focus {
+  outline: .125em solid gold;
+}
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  padding: 1.5em;
+  margin: 0;
+}
+
+/* MODALS */
+.modal::before,
+.modal::after {
+  content: '';
+  width: 100%;
+  height: 2em;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 1;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  overflow-y : auto;
+}
+
+/* modal background color stacking */
+
+/*1*/
+.modal:not([hidden]) {
+  background: rgba(0, 0, 0, 0.7);
+}
+/*2*/
+.modal:not([hidden]) + .modal:not([hidden]):last-child {
+  background: rgba(0, 0, 0, 0.63);
+}
+/*3*/
+.modal:not([hidden]) + .modal:not([hidden]) + .modal:not([hidden]):last-child {
+  background: rgba(0, 0, 0, 0.56);
+}
+/*4*/
+.modal:not([hidden]) + .modal:not([hidden]) + .modal:not([hidden]) + .modal:not([hidden]):last-child {
+  background: rgba(0, 0, 0, 0.49);
+}
+/*5*/
+.modal:not([hidden]) +  .modal:not([hidden]) + .modal:not([hidden]) + .modal:not([hidden]) + .modal:not([hidden]):last-child {
+  background: rgba(0, 0, 0, 0.42);
+}
+.modal:not([hidden]):nth-last-of-type(n+2) {
+  background: rgba(0, 0, 0, 0.17);
+}
+.modal__content {
+  background: white;
+  width: 30vw;
+  margin: auto;
+  padding: 1.5em;
+}
+.modal__helper {
+  /*you might want to mark these as !important to ensure the correct behaviour*/
+  margin: 0;
+  border: 0;
+  padding: 0;
+  height: 0;
+}
+.modal__helper:focus {
+  outline: 0;
+  border: 0;
+}
+.noscroll {
+  position: fixed;
+  overflow: hidden;
+}
+[hidden] {
+  /* while this is the default, we have a tiny specitivity issue and need to explicitly set this */
+  display: none;
+}
