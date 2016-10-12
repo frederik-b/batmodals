@@ -22,7 +22,6 @@
 
   modal.show = function() {
     if (!document.querySelectorAll('[data-modal]:not([hidden])').length) {
-      document.body.style.paddingRight = window.innerWidth - document.body.clientWidth + 'px';
       document.body.classList.add('noscroll');
     }
     // document.body.appendChild(this);
@@ -43,7 +42,6 @@
     if (document.querySelectorAll('[data-modal]:not([hidden])').length) {
       document.body.insertBefore(this, document.querySelector('[data-modal]:not([hidden])'));
     } else {
-      document.body.style.paddingRight = '';
       document.body.classList.remove('noscroll');
     }
   };
