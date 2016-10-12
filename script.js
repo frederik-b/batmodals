@@ -123,9 +123,21 @@
       if (activeModal.contains(document.activeElement)) {
         return;
       }
-      var focusables = Array.prototype.slice.call(activeModal.querySelectorAll('button, input, [tabindex]:not([tabindex="-1"])'));
+      var focusables = Array.prototype.slice.call(activeModal.querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [contenteditable], [tabindex]:not([tabindex^="-"])'));
       if (focusables.length === 0) {
-        modal.focus();
+        if (activeModal.tabIndex === -1) {
+          if (activeModal.hasAttribute('tabindex')) {
+            // activeModal.setAttribute('tabindex', 0);
+            activeModal.focus();
+            // activeModal.setAttribute('tabindex', -1);
+          } else {
+            activeModal.setAttribute('tabindex', 0);
+            activeModal.focus();
+            activeModal.removeAttribute('tabindex');
+          }
+        } else {
+          activeModal.focus();
+        }
         return;
       }
       // focus last/first element depending on forward/backward tabbing
